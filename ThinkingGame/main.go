@@ -8,7 +8,7 @@ import (
 
 func main() {
 	var sudoko string
-	var s2 []string
+	//var s2 []string
 	for i := 1; i <= 9; i++ {
 		sudoko += os.Args[i]
 		sudoko += "\n"
@@ -21,7 +21,7 @@ func main() {
 	s := FillEmptySpace(buffer)
 	valid := validateDigits(s)
 	if valid {
-		fmt.Println(s2)
+		fmt.Println(len(s))
 
 	}
 }
