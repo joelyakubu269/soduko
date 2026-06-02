@@ -4,7 +4,10 @@ func validateDigits(s []string) bool {
 	valid := true
 	for i := 0; i < 9; i++ { // checking the rows
 		for j := 0; j < 9; j++ {
-			for k := 1; k < 9; k++ {
+			for k := j+i; k < 9; k++ {
+				if s[i][j] == s[i][k] && s[i][j]== '.' || s[j][i] == s[j][k] && s[j][i] == '.' { // making sure duplicates are not dots
+					continue
+				}
 				if s[i][j] == s[i][k] || s[j][i] == s[j][k] {
 					valid = false
 					return valid

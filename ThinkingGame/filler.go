@@ -7,7 +7,9 @@ import (
 )
 
 func FillEmptySpace(s []string) []string {
-	rows, cols, err := extractPositions(s)
+	s1,err:= findEmptySpace(s)
+	
+	rows, cols, err := extractPositions(s1)
 	if err == nil {
 		for i := 0; i < len(rows); i++ {
 			iVal := rows[i]
