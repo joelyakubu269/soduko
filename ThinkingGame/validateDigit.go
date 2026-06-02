@@ -1,32 +1,33 @@
 package main
 
-func isValid(board []string, row,col int , val byte) bool {
+func isValid(board []string, row, col int, val byte) bool {
 	// row check
-	for i:= 0; i< 9; i++ {
-		if board[row][i] == val {
+	for i := 0; i < 9; i++ {
+		if board[row][i] == val { // checks a particular row from column 0 to 8
 			return false
 		}
 	}
 	// column check
-	for j:= 0; j< 9; j++ {
-		if board[col][j] == val {
+	for j := 0; j < 9; j++ {
+		if board[j][col] == val { // checks a particular column from rows 0 to 8
 			return false
 		}
 	}
 
 	// box check
-	boxrow:= (row/3) * 3
-	boxcol:= (col/3)
-	for k:= 0; k<3; k++ {
-		for l:=0; l<3; l++ {
+	boxrow := (row / 3) * 3
+	boxcol := (col / 3)
+	for k := 0; k < 3; k++ {
+		for l := 0; l < 3; l++ {
 			if board[boxrow+k][boxcol+k] == val {
 				return false
+			}
 		}
-		}
-		
+
 	}
 	return true
 }
+
 // func validateDigits(s []string) bool {
 // 	valid := true
 // 	for i := 0; i < 9; i++ { // checking the rows
@@ -44,4 +45,3 @@ func isValid(board []string, row,col int , val byte) bool {
 // 	}
 // 	return valid
 // }
-
