@@ -27,9 +27,11 @@ import (
 func main() {
 	board := os.Args[1:]
 
-	board = FillEmptySpace(board)
-
-	for _, row := range board {
-		fmt.Println(row)
+	if solveBoard(board) {
+		for i := 0; i < 9; i++ {
+			fmt.Println(board[i])
+		}
+	} else {
+		fmt.Println("No solution")
 	}
 }
