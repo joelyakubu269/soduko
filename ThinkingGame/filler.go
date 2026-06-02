@@ -7,31 +7,34 @@ import (
 )
 
 func FillEmptySpace(board []string) []string {
-	s1, err := findEmptySpace(s)
+	s1, err := findEmptySpace(board)
 
 	rows, cols, err := extractPositions(s1)
 	if err != nil {
-		return s
+		return board
 	}
 	for i := 0; i < len(rows); i++ {
 		r := rows[i]
 		c := cols[i]
-		found := false
-		row := []rune(s[r]) // because strings are immutable and so you cannot change the individual values i cast s into a slice of runes
+
+		row := []rune(board[r]) // because strings are immutable and so you cannot change the individual values i cast s into a slice of runes
 		placed := false
 		for num := byte('1'); num <= '9'; num++ {
 			if isValid(board, r, c, num) {
-				row[c] = rune(num) // this enables to put a valid value at a position in the slice of runes
+				row[c] = rune(num)     // this enables to put a valid value at a position in the slice of runes
+				board[r] = string(row) // make changes to the slice of strings at the positions, where dots where found
+				placed = true
+				break
 			}
 
 		}
-		if !found {
-			row[jVal] = '.'
-			s[iVal] = string(row)
+		if !placed {
+			row[c] = '.'
+			board[r] = string(row)
 		}
 	}
 
-	return s
+	return board
 }
 func extractPositions(s []string) ([]int, []int, error) {
 	rows := []int{}
