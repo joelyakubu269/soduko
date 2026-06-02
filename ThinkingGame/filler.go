@@ -18,7 +18,7 @@ func FillEmptySpace(s []string) []string {
 		jVal := cols[i]
 		found := false
 		row := []rune(s[iVal]) // because strings are immutable and so you cannot change the individual values i cast s into a slice of runes
-		for j := 0; j < 9; j++ {
+		for j := 1; j <= 9; j++ {
 			row[jVal] = rune('0' + j)
 			s[iVal] = string(row)
 			if validateDigits(s) {

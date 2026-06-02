@@ -1,23 +1,37 @@
 package main
 
-func validateDigits(s []string) bool {
-	valid := true
-	for i := 0; i < 9; i++ { // checking the rows
-		for j := 0; j < 9; j++ {
-			for k := j+i; k < 9; k++ {
-				if s[i][j] == s[i][k] && s[i][j]== '.' || s[j][i] == s[j][k] && s[j][i] == '.' { // making sure duplicates are not dots
-					continue
-				}
-				if s[i][j] == s[i][k] || s[j][i] == s[j][k] {
-					valid = false
-					return valid
-				}
-			}
+func isValid(board []string, row,col int , val byte) bool {
+	// row check
+	for i:= 0; i< 9; i++ {
+		if board[row][i] == val {
+			return false
 		}
 	}
-	return valid
+	// column check
+	for j:= 0; j< 9; j++ {
+		if board[col][j] == val {
+			return false
+		}
+	}
+
+	// box check
+	
 }
-
-// func gridChecker() {
-
+// func validateDigits(s []string) bool {
+// 	valid := true
+// 	for i := 0; i < 9; i++ { // checking the rows
+// 		for j := 0; j < 9; j++ {
+// 			for k := j+i; k < 9; k++ {
+// 				if s[i][j] == s[i][k] && s[i][j]== '.' || s[j][i] == s[j][k] && s[j][i] == '.' { // making sure duplicates are not dots
+// 					continue
+// 				}
+// 				if s[i][j] == s[i][k] || s[j][i] == s[j][k] {
+// 					valid = false
+// 					return valid
+// 				}
+// 			}
+// 		}
+// 	}
+// 	return valid
 // }
+
