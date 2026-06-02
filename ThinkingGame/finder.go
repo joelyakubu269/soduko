@@ -10,6 +10,6 @@ func findEmptySpace(s []string) []string {
 				buffer = append(buffer, fmt.Sprintf("%d,%d", i, j)) // append the position in a slice of strings
 			}
 		}
-
 	}
+	return buffer
 }
