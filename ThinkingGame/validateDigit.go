@@ -15,7 +15,17 @@ func isValid(board []string, row,col int , val byte) bool {
 	}
 
 	// box check
-	
+	boxrow:= (row/3) * 3
+	boxcol:= (col/3)
+	for k:= 0; k<3; k++ {
+		for l:=0; l<3; l++ {
+			if board[boxrow+k][boxcol+k] == val {
+				return false
+		}
+		}
+		
+	}
+	return true
 }
 // func validateDigits(s []string) bool {
 // 	valid := true

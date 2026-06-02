@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func FillEmptySpace(s []string) []string {
+func FillEmptySpace(board []string) []string {
 	s1, err := findEmptySpace(s)
 
 	rows, cols, err := extractPositions(s1)
@@ -14,16 +14,14 @@ func FillEmptySpace(s []string) []string {
 		return s
 	}
 	for i := 0; i < len(rows); i++ {
-		iVal := rows[i]
-		jVal := cols[i]
+		r := rows[i]
+		c := cols[i]
 		found := false
-		row := []rune(s[iVal]) // because strings are immutable and so you cannot change the individual values i cast s into a slice of runes
-		for j := 1; j <= 9; j++ {
-			row[jVal] = rune('0' + j)
-			s[iVal] = string(row)
-			if validateDigits(s) {
-				found = true
-				break
+		row := []rune(s[r]) // because strings are immutable and so you cannot change the individual values i cast s into a slice of runes
+		placed := false
+		for num := byte('1'); num <= '9'; num++ {
+			if isValid(board, r, c, num) {
+				row[c] = rune(num) // this enables to put a valid value at a position in the slice of runes
 			}
 
 		}
