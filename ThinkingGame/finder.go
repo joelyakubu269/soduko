@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func findEmptySpace(s []string) []string {
+func findEmptySpace(s []string) ([]string, error) {
 	buffer := []string{}
 	for i := 0; i < 9; i++ { // have a grid  of nine rows
 		for j := 0; j < 9; j++ {
@@ -11,5 +11,5 @@ func findEmptySpace(s []string) []string {
 			}
 		}
 	}
-	return buffer
+	return buffer, nil
 }

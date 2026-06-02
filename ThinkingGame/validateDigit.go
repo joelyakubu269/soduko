@@ -14,3 +14,7 @@ func validateDigits(s []string) bool {
 	}
 	return valid
 }
+
+// func gridChecker() {
+
+// }
